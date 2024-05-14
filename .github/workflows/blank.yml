@@ -5,8 +5,8 @@ on:
     branches:
       - master
   schedule:
-    - cron: '0 0 * * 0'  
-  workflow_dispatch:      
+    - cron: '0 0 * * 0' 
+  workflow_dispatch:    
 
 jobs:
   build:
@@ -25,11 +25,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-      shell: bash
-
-    - name: Run PowerShell script
-      run: ./installResources.ps1
-      shell: pwsh
+        ./installResources.ps1
 
     - name: Build project
       run: pyinstaller --onefile --noconsole converter.py
